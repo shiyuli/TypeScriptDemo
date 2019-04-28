@@ -1,9 +1,12 @@
-﻿interface IBrowser {
-    name: string;
-    speed: number;
-}
+﻿import { Browsers } from "./Browsers";
+import { Utils } from "./utils";
 
-function compareBrowser(browserA: IBrowser, browserB: IBrowser): IBrowser {
+/**
+ * Compare two browsers, and return the faster one.
+ * @param browserA
+ * @param browserB
+ */
+function compareBrowser(browserA: Browsers.IBrowser, browserB: Browsers.IBrowser): Browsers.IBrowser {
     let fastBrowser = null;
 
     if (browserA.speed >= browserB.speed) {
@@ -15,27 +18,24 @@ function compareBrowser(browserA: IBrowser, browserB: IBrowser): IBrowser {
     return fastBrowser;
 }
 
-function printBrowser(browser: IBrowser) {
-    console.log(
-        browser.name,
-        "is the fasted browser,",
-        "and its speed is",
-        browser.speed,
-        ".");
-}
-
-function delay(milliseconds: number) {
-    return new Promise(resolve => setTimeout(resolve, milliseconds));
-}
-
 function main() {
-    let browserA: IBrowser = { name: "Chrome", speed: 99 };
-    let browserB: IBrowser = { name: "Firefox", speed: 90 };
+    let chrome: Browsers.Browser = new Browsers.Chrome();
+    let firefox: Browsers.Browser = new Browsers.Firefox();
 
-    let fastBrowser = compareBrowser(browserA, browserB);
-    printBrowser(fastBrowser);
+    let fastBrowser = compareBrowser(chrome, firefox);
+    fastBrowser.print();
 
-    delay(10000);
+    //let chromeI: IBrowser = {
+    //    name: "Chrome", speed: 99, print: null
+    //};
+    //let firefoxI: IBrowser = {
+    //    name: "Firefox", speed: 90, print: null
+    //};
+
+    //let fastBrowserI = compareBrowser(chromeI, firefoxI);
+    //print(fastBrowserI);
+
+    Utils.delay(10000);
 }
 
 main();
