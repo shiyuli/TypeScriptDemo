@@ -9,8 +9,7 @@ function compareBrowser(browserA, browserB) {
     return fastBrowser;
 }
 function printBrowser(browser) {
-    console.log("name: ", browser.name);
-    console.log("speed: ", browser.speed);
+    console.log(browser.name, "is the fasted browser,", "and its speed is", browser.speed);
 }
 function delay(milliseconds) {
     return new Promise(resolve => setTimeout(resolve, milliseconds));

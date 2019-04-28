@@ -3,7 +3,7 @@
     speed: number;
 }
 
-function compareBrowser(browserA, browserB: IBrowser): IBrowser {
+function compareBrowser(browserA: IBrowser, browserB: IBrowser): IBrowser {
     let fastBrowser = null;
 
     if (browserA.speed >= browserB.speed) {
@@ -16,8 +16,12 @@ function compareBrowser(browserA, browserB: IBrowser): IBrowser {
 }
 
 function printBrowser(browser: IBrowser) {
-    console.log("name: ", browser.name);
-    console.log("speed: ", browser.speed);
+    console.log(
+        browser.name,
+        "is the fasted browser,",
+        "and its speed is",
+        browser.speed,
+        ".");
 }
 
 function delay(milliseconds: number) {
